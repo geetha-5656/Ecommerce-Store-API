@@ -1,4 +1,4 @@
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,7 +6,7 @@
 }
 
 /* Navbar */
-.navbar{
+.navbar {
     width: 100%;
     padding: 15px 40px;
     background: #fff;
@@ -19,17 +19,29 @@
     z-index: 1000;
 }
 
-.logo{
+.logo {
     font-size: 22px;
     font-weight: bold;
-    
+
 }
-.logo a{
+
+.logo a {
     text-decoration: none;
     color: black;
 }
 
-nav a{
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: #333;
+}
+
+nav {
+    display: flex;
+}
+
+nav a {
     margin: 0 15px;
     text-decoration: none;
     color: #333;
@@ -37,19 +49,20 @@ nav a{
     transition: 0.3s;
 }
 
-nav a:hover{
+nav a:hover {
     color: #007bff;
 }
 
 /* Buttons */
 
-.icons{
-  display:flex;
-  justify-content: center;
-  gap:20px;
- 
+.icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+
 }
-.icons .btn{
+
+.icons .btn {
     margin-left: 10px;
     padding: 8px 15px;
     border: 1px solid #333;
@@ -62,13 +75,14 @@ nav a:hover{
     gap: 6px;
     font-size: 14px;
     flex-direction: row;
-   
+
 }
 
-.btn:hover{
+.btn:hover {
     background: #333;
     color: #fff;
 }
+
 /* Hero Section */
 .hero{
     width: 100%;
@@ -100,21 +114,7 @@ nav a:hover{
     line-height: 1.5;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    nav{
-        display: none;
-    }
 
-    .hero{
-        padding-left: 20px;
-        height: 350px;
-    }
-
-    .hero h1{
-        font-size: 30px;
-    }
-}
 /* footer-section */
 .footer{
     text-align: center;
@@ -236,6 +236,86 @@ nav a:hover{
 
 .card-btns button:hover {
     background: #555;
+}
+
+/* Navbar Responsive */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 15px 20px;
+    }
+
+    .hamburger {
+        display: block;
+    }
+
+    nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: #fff;
+        flex-direction: column;
+        display: none;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        margin: 10px 20px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    nav .icons {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 20px;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    nav .icons .btn {
+        justify-content: flex-start;
+        width: 100%;
+        margin: 0;
+    }
+
+    .desktop-icons {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .hamburger {
+        font-size: 20px;
+    }
+
+    nav a {
+        font-size: 14px;
+        margin: 8px 15px;
+    }
+
+    nav .icons {
+        margin: 8px 15px;
+        gap: 8px;
+    }
+
+    nav .icons .btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
 }
 
 

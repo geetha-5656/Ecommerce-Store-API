@@ -5,15 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ecommerce</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="homepage.css">
+    <link rel="stylesheet" href="about.css">
 </head>
 <body>
+    
 <!-- navigation bar -->
 <header class="navbar">
     <div class="logo">
     <a href="Homepage.html">Ecommerce</a>
     </div>
 
+     <div class="hamburger">
+        <i class="fa fa-bars"></i>
+    </div>
     <nav>
         <a href="Homepage.html">Home</a>
         <a href="Products.html">Products</a>
@@ -21,9 +25,122 @@
         <a href="contact.html">Contact</a>
     </nav>
 
-    <div class="icons">
+    <div class="icons desktop-icons">
         <button class="btn"><i class="fa-solid fa-right-to-bracket"></i> Login</button>
         <button class="btn"><i class="fa-solid fa-user-plus"></i> Register</button>
         <button class="btn cart"><i class="fa-solid fa-cart-shopping"></i> Cart (0)</button>
     </div>
 </header>
+
+<section class="heading">
+        <h1>About Us</h1>
+        <p class="subtitle">Discover our story and explore our premium products</p>
+</section>
+    
+    <div class="container">
+        <div class="about-section">
+            <h2>Our Story</h2>
+            <div class="about-text">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum facere doloremque veritatis odit similique sequi. Odit amet fuga nam quam quasi facilis sed doloremque saepe sint perspiciatis explicabo totam vero quas provident ipsam, veritatis nostrum velit quos recusandae est moliltia esse fugit dolore laudantium.</p>
+                <br>
+                <p>Ex vel explicabo earum unde eligendi autem praesentium, doloremque distinctio nescunt porro tempore quis eaque labore voluptatibus ea necessitatibus exercitationem tempora molestias. Ad consequuntur veniam sequi ullam tempore vel tenetur soluta dolore sunt maxime aliquam corporis est, quo saepe dolorem optio minus sint nemo totam dolorum!</p>
+                <br>
+                <p>Reprehenderit delectus expedita a alias nam recusandae illo debitis repellat libero, quasi explicabo molestiae saepe, dolorem tempore itaque eveniet quam dignissimos blanditiis excepturi harum numquam vel nihil? Ipsum.</p>
+            </div>
+        </div>
+        
+        <div class="about-section">
+            <h2>Our Values</h2>
+            <div class="about-text">
+                <p>We believe in providing high-quality products that enhance everyday life. Our commitment to excellence ensures that every item we offer meets the highest standards of craftsmanship and design.</p>
+                <br>
+                <p>Customer satisfaction is at the heart of everything we do. From the moment you browse our collection to the day your product arrives, we strive to provide an exceptional experience.</p>
+                <br>
+                <p>Our team is dedicated to curating the finest selection of products across categories, ensuring there's something special for everyone. We're constantly exploring new trends and innovations to keep our offerings fresh and exciting.</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="divider"></div>
+    
+    <div class="products-section">
+        <h2>Our Products</h2>
+        
+        <div class="product-categories">
+            <div class="category-tag">Men's Clothing</div>
+            <div class="category-tag">Women's Clothing</div>
+            <div class="category-tag">Jewelry</div>
+            <div class="category-tag">Electronics</div>
+        </div>
+        
+        <div class="cards-container">
+            <!-- Card 1 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/pexels-photo-298863.jpeg" alt="" >
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Premium Men's Wear</h3>
+                    <p>High-quality clothing designed for comfort and style. Perfect for any occasion from casual to formal.</p>
+                    <a href="#" class="card-button">Explore Collection</a>
+                </div>
+            </div>
+            
+            <!-- Card 2 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/pexels-photo-7679720.jpeg" alt="">
+                    <i class="fas fa-female"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Women's Fashion</h3>
+                    <p>Elegant and contemporary designs that celebrate individuality and confidence in every woman.</p>
+                    <a href="#" class="card-button">View Selection</a>
+                </div>
+            </div>
+            
+            <!-- Card 3 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/pexels-photo-1927259.webp" alt="">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Exquisite Jewelry</h3>
+                    <p>Handcrafted pieces that blend traditional artistry with modern aesthetics for timeless beauty.</p>
+                    <a href="#" class="card-button">Browse Items</a>
+                </div>
+            </div>
+            
+            <!-- Card 4 -->
+            <div class="card">
+                <div class="card-image">
+                    <img src="images/pexels-photo-356056.jpeg" alt="">
+                    <i class="fas fa-laptop"></i>
+                </div>
+                <div class="card-content">
+                    <h3>Latest Electronics</h3>
+                    <p>Cutting-edge technology and innovative gadgets to enhance your digital lifestyle and productivity.</p>
+                    <a href="#" class="card-button">Discover Tech</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+   <footer class="footer">
+    Made with ❤️ by Geetha
+</footer>
+<script>
+    // Hamburger menu toggle
+const hamburger = document.querySelector('.hamburger');
+const nav = document.querySelector('nav');
+
+hamburger.addEventListener('click', () => {
+    nav.classList.toggle('active');
+});
+</script>
+
+
+</body>
+</html>
