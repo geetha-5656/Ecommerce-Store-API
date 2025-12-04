@@ -37,10 +37,21 @@
 <section class="cart-section">
     <div class="cart-container">
         <h1>Cart</h1>
-        <div class="empty-cart">
-            <i class="fas fa-shopping-cart empty-icon"></i>
-            <p>Your cart is Empty</p>
-            <a href="Homepage.html" class="continue-shopping-btn">Continue Shopping</a>
+        <div class="cart-layout">
+            <div class="cart-items-container">
+                <h2>Cart Items</h2>
+                <div id="cartItems"></div>
+                <div class="empty-cart" id="emptyCart">
+                    <i class="fas fa-shopping-cart empty-icon"></i>
+                    <p>Your cart is Empty</p>
+                    <a href="Homepage.html" class="continue-shopping-btn">Continue Shopping</a>
+                </div>
+            </div>
+            <div class="order-summary">
+                <h2>Order Summary</h2>
+                <div id="orderDetails"></div>
+                <button id="checkoutBtn" onclick="checkout()"> Go and Checkout</button>
+            </div>
         </div>
     </div>
 </section>
@@ -48,5 +59,97 @@
 <footer class="footer">
     Made with ❤️ by Geetha
 </footer>
+
+<script>
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+function loadCart() {
+    const cartItems = document.getElementById('cartItems');
+    const orderDetails = document.getElementById('orderDetails');
+    const emptyCart = document.getElementById('emptyCart');
+    const checkoutBtn = document.getElementById('checkoutBtn');
+
+    if (cart.length === 0) {
+        emptyCart.style.display = 'block';
+        cartItems.innerHTML = '';
+        orderDetails.innerHTML = '';
+        checkoutBtn.style.display = 'none';
+        document.querySelector('.order-summary').style.display = 'none';
+        return;
+    }
+
+    document.querySelector('.order-summary').style.display = 'block';
+    emptyCart.style.display = 'none';
+    checkoutBtn.style.display = 'block';
+
+    cartItems.innerHTML = cart.map(item => `
+        <div class="cart-item">
+            <img src="${item.image}" alt="${item.title}">
+            <div class="item-details">
+                <h3>${item.title}</h3>
+                <p>Price: $${item.price}</p>
+                <div class="quantity-controls">
+                    <button onclick="changeQuantity(${item.id}, -1)">-</button>
+                    <span>${item.quantity}</span>
+                    <button onclick="changeQuantity(${item.id}, 1)">+</button>
+                </div>
+                <button onclick="removeItem(${item.id})">Remove</button>
+            </div>
+        </div>
+    `).join('');
+
+    const productsTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const shippingCharges = productsTotal > 0 ? 10 : 0;
+    const total = productsTotal + shippingCharges;
+
+    orderDetails.innerHTML = `
+        <p>Products: $${productsTotal.toFixed(2)}</p>
+        <p>Shipping Charges: $${shippingCharges.toFixed(2)}</p>
+        <p><strong>Total: $${total.toFixed(2)}</strong></p>
+    `;
+}
+
+function changeQuantity(productId, change) {
+    const item = cart.find(item => item.id === productId);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            removeItem(productId);
+        } else {
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+            updateCartCount();
+        }
+    }
+}
+
+function checkout() {
+    // Clear the cart
+    localStorage.removeItem('cart');
+    cart = [];
+    loadCart();
+    updateCartCount();
+    
+    window.location.href = 'Homepage.html';
+}
+
+function removeItem(productId) {
+    cart = cart.filter(item => item.id !== productId);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    loadCart();
+    updateCartCount();
+}
+
+function updateCartCount() {
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const cartBtn = document.querySelector('.btn a[href="cart.html"]');
+    if (cartBtn) {
+        cartBtn.textContent = `Cart (${cartCount})`;
+    }
+}
+
+loadCart();
+updateCartCount();
+</script>
 </body>
 </html>

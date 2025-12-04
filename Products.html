@@ -70,7 +70,7 @@ function displayProducts(products) {
             <div class="product-price">$ ${product.price}</div>
             <div class="card-btns">
                 <button>Details</button>
-                <button>Add to Cart</button>
+                <button onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.image}')">Add to Cart</button>
             </div>
         </div>
     `).join("");
@@ -105,6 +105,34 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
 });
 
 loadProducts();
+updateCartCount();
+
+// Add to cart function
+function addToCart(id, title, price, image) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existingItem = cart.find(item => item.id === id);
+
+    if (existingItem) {
+        existingItem.quantity += 1;
+        alert('This product is already in the cart');
+    } else {
+        cart.push({ id, title, price, image, quantity: 1 });
+        alert('Product added to cart!');
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    updateCartCount();
+}
+
+// Update cart count in navbar
+function updateCartCount() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    const cartBtn = document.querySelector('.btn a[href="cart.html"]');
+    if (cartBtn) {
+        cartBtn.textContent = `Cart(${cartCount})`;
+    }
+}
 
 // Hamburger menu toggle
 const hamburger = document.querySelector('.hamburger');
