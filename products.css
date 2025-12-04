@@ -61,6 +61,10 @@ nav a:hover{
   gap:20px;
 
 }
+.btn a{
+    text-decoration: none;
+    color: black;
+}
 .icons .btn{
     margin-left: 10px;
     padding: 6px 13px;
@@ -79,6 +83,10 @@ nav a:hover{
 
 .btn:hover{
     background: #333;
+    color: #fff;
+}
+
+.btn:hover a {
     color: #fff;
 }
 /* Navbar Responsive */

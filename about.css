@@ -61,6 +61,13 @@ nav a:hover {
     gap: 20px;
 
 }
+.btn a{
+    text-decoration: none;
+    color: black;
+}
+.btn a:hover{
+    color:white
+}
 
 .icons .btn {
     margin-left: 10px;
@@ -80,6 +87,10 @@ nav a:hover {
 
 .btn:hover {
     background: #333;
+    color: #fff;
+}
+
+.btn:hover a {
     color: #fff;
 }
 .heading {
