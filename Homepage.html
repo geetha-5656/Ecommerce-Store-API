@@ -117,7 +117,7 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
 loadProducts();
 updateCartCount();
 
-// Add to cart function
+// Adding to cart function
 function addToCart(id, title, price, image) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     const existingItem = cart.find(item => item.id === id);
@@ -134,7 +134,7 @@ function addToCart(id, title, price, image) {
     updateCartCount();
 }
 
-// Update cart count in navbar
+// Update cart count 
 function updateCartCount() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
