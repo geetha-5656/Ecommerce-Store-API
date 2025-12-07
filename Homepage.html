@@ -80,7 +80,7 @@ function displayProducts(products) {
             <div class="product-price">$ ${product.price}</div>
             <div class="card-btns">
                 <button>Details</button>
-                <button onclick='addToCart(${product.id}, ${JSON.stringify(product.title)}, ${product.price}, ${JSON.stringify(product.image)})'>Add to Cart</button>
+                <button onclick="addToCart(${product.id}, '${product.title}', ${product.price}, '${product.image}')">Add to Cart</button>
             </div>
         </div>
     `).join("");
@@ -90,7 +90,7 @@ function displayProducts(products) {
 document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", () => {
 
-        // Active Class Toggle
+       
         document.querySelector(".filter-btn.active")?.classList.remove("active");
         btn.classList.add("active");
 
